@@ -1,0 +1,66 @@
+@model IEnumerable<Nudge.Models.Personne>
+
+@{
+    ViewData["Title"] = "Joueurs";
+}
+<div class="text-center">
+    <h1>Profils</h1>
+    <p>
+        <a asp-action="Create">Nouveau profil</a>
+    </p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Photo
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                Prénom
+            </th>
+            <th>
+                Courriel
+            </th>
+            <th>
+                Télephone
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <thead>
+                <tr>
+                    <td>
+                        <img src='../images/@Html.DisplayFor(modelItem => item.LienPhoto)' height="100" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prenom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AdresseMail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumTel)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" title="Modifier">✏️</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id" title="Détails">🔍</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" title="Supprimer">❌</a>
+                    </td>
+                </tr>
+            </thead>
+        }
+    </tbody>
+</table>
+
+</div>

@@ -1,0 +1,65 @@
+@model Nudge.Models.Personne
+@{
+    ViewData["Title"] = "Création";
+}
+
+<h1 class="text-center">Créer un nouveau profil</h1>
+<div class="text-center"><img class="text-center" src="https://images.emojiterra.com/openmoji/v13.1/512px/1f464.png"
+        height="100" width="100" alt="">
+
+    <hr />
+    <div class="d-flex justify-content-center row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Nom" class="control-label"></label>
+                    <input asp-for="Nom" class="form-control" />
+                    <span asp-validation-for="Nom" class="text-danger"></span>
+                </div>
+                <br>
+
+                <div class="form-group">
+                    <label asp-for="Prenom" class="control-label"></label>
+                    <input asp-for="Prenom" class="form-control" />
+                    <span asp-validation-for="Prenom" class="text-danger"></span>
+                </div>
+                <br>
+
+                <div class="form-group">
+                    <label asp-for="LienPhoto" class="control-label">Photo (insérer le lien)</label>
+                    <input asp-for="LienPhoto" class="form-control" value="ours.png" />
+                    <span asp-validation-for="LienPhoto" class="text-danger"></span>
+                </div>
+                <br>
+
+                <div class="form-group">
+                    <label asp-for="AdresseMail" class="control-label">Courriel</label>
+                    <input asp-for="AdresseMail" class="form-control" />
+                    <span asp-validation-for="AdresseMail" class="text-danger"></span>
+                </div>
+                <br>
+
+                <div class="form-group">
+                    <label asp-for="NumTel" class="control-label">Télephone</label>
+                    <input asp-for="NumTel" class="form-control" />
+                    <span asp-validation-for="NumTel" class="text-danger"></span>
+                </div>
+                <br>
+                <div class="form-group">
+                    <input type="submit" value="Creer" class="btn btn-primary" />
+                </div>
+                <br>
+            </form>
+        </div>
+    </div>
+    <br>
+    <div>
+        <a asp-action="Index">Retour</a>
+    </div>
+
+</div>
+
+@section Scripts {
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

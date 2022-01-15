@@ -1,0 +1,106 @@
+@model Nudge.Models.Personne
+
+
+@{
+    ViewData["Title"] = "Détails";
+}
+
+<div class="col">
+    <img src='/images/@Html.DisplayFor(model => model.LienPhoto)' height="100" width="max" />
+</div>
+<div>
+    <h4>@Html.DisplayFor(model => model.Prenom) @Html.DisplayFor(model => model.Nom) </h4>
+    <hr />
+    <dl class="row">
+        <dt class="col">
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+
+        <dt class="col">
+            @Html.DisplayNameFor(model => model.Prenom)
+        </dt>
+
+        <dt class="col">
+            Courriel
+        </dt>
+        <dt class="col">
+            Télephone
+        </dt>
+    </dl>
+    <dl class="row">
+        <dd class="col">
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+        <dd class="col">
+            @Html.DisplayFor(model => model.Prenom)
+        </dd>
+
+
+        <dd class="col">
+            @Html.DisplayFor(model => model.AdresseMail)
+        </dd>
+
+        <dd class="col">
+            @Html.DisplayFor(model => model.NumTel)
+    </dl>
+    <br>
+    <br>
+    <br>
+    <h4>Les défis en cours</h4>
+
+    <dd class="col">
+        @foreach (var item in Model.ListeDefi)
+        {
+            <hr />
+            <dl class="row">
+
+                <dt class="col">
+                    @Html.DisplayNameFor(modelItem => item.Intitule)
+                </dt>
+                <dt class="col">
+                    @Html.DisplayNameFor(modelItem => item.Commentaire)
+
+                </dt>
+                <dt class="col">
+                    Date de début
+                </dt>
+                <dt class="col">
+                    Date de fin
+                </dt>
+                <dt class="col">
+                    Progression
+                </dt>
+            </dl>
+        <dd class="col">
+            <dl class="row">
+                <dd class="col">
+                        @Html.DisplayFor(modelItem => item.Intitule)
+
+                </dd>
+                <dd class="col">
+                        @Html.DisplayFor(modelItem => item.Commentaire)
+
+                </dd>
+                <dd class="col">
+                        @Html.DisplayFor(modelItem => item.DateDebut)
+
+                </dd>
+                <dd class="col">
+                        @Html.DisplayFor(modelItem => item.DateFin)
+
+                </dd>
+                <dd class="col">
+                    <progress value="@item.Progression" max='@item.Repetition'></progress>
+
+                </dd>
+            </dl>
+
+        </dd>
+        }
+    </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Modifier</a> |
+    <a asp-action="Index">Retour</a>
+</div>

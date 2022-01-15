@@ -1,0 +1,91 @@
+@model Nudge.Models.Defi
+
+@{
+    ViewData["Title"] = "Modifier";
+}
+
+<div class="text-center">
+<h1>Modifier mon défi</h1>
+<h4 class="text-center">✏️</h4>
+
+<hr />
+<div class="row">
+    <div class="col">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="PersonneId" class="control-label">Nom</label>
+                <select asp-for="PersonneId" class="form-control" asp-items="ViewBag.PersonneId"></select>
+                <span asp-validation-for="PersonneId" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Intitule" class="control-label"></label>
+                <input asp-for="Intitule" class="form-control" />
+                <span asp-validation-for="Intitule" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Commentaire" class="control-label"></label>
+                <input asp-for="Commentaire" class="form-control" />
+                <span asp-validation-for="Commentaire" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Theme" class="control-label"></label>
+                <input asp-for="Theme" class="form-control" />
+                <span asp-validation-for="Theme" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="DateDebut" class="control-label">Date de début</label>
+                <input asp-for="DateDebut" class="form-control" />
+                <span asp-validation-for="DateDebut" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="DateFin" class="control-label">Date de fin</label>
+                <input asp-for="DateFin" class="form-control" />
+                <span asp-validation-for="DateFin" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Progression" class="control-label"></label>
+                <input asp-for="Progression" class="form-control" />
+                <span asp-validation-for="Progression" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Repetition" class="control-label"></label>
+                <input asp-for="Repetition" class="form-control" id="champSaisie"  onFocus="this.value='';"  style="visibility:visible"  />
+                <span asp-validation-for="Repetition" class="text-danger"></span>
+            </div>
+                        <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input type=checkbox class="form-check-input" asp-for="TousLesJours" /> Tous les jours
+                </label>
+            </div>
+            <br>
+            <br>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input asp-for="Reussite" class="form-check-input" type="checkbox"   onClick="document.getElementById('champSaisie').style.visibility=(this.checked?'hidden':'visible');" /> Terminé
+                </label>
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="submit" value="Sauvegarder" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div>
+    <a asp-action="Index">Retour</a>
+</div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,32 @@
+@model Nudge.Models.Trophee
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+        <table class="table">
+        <tr>
+            <th>
+            Intitulé du trophee
+            </th>
+            <th>
+            Joueur
+            </th>
+        </tr>
+        <tr>
+            <td>
+            @Html.DisplayFor(model => model.NomTrophee)
+            </td>
+            <td>
+            @Html.DisplayFor(model => model.Personne.Nom)
+            </td>
+        </tr>
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Modifier</a> |
+    <a asp-action="Index">Retour</a>
+</div>

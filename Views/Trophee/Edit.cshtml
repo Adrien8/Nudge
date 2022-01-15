@@ -1,0 +1,49 @@
+@model Nudge.Models.Trophee
+
+@{
+    ViewData["Title"] = "Modifier";
+}
+<div class="text-center">
+<h1>Modifier un trophée</h1>
+
+<hr />
+<div class="row">
+    <div class="col">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="PersonneId" class="control-label">Prenom</label>
+                <select asp-for="PersonneId" class="form-control" asp-items="ViewBag.PersonneId"></select>
+                <span asp-validation-for="PersonneId" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="DefiId" class="control-label">Intitule</label>
+                <select asp-for="DefiId" class="form-control" asp-items="ViewBag.DefiId"></select>
+                <span asp-validation-for="DefiId" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="NomTrophee" class="control-label">Trophee</label>
+                <input asp-for="NomTrophee" class="form-control" />
+                <span asp-validation-for="NomTrophee" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="submit" value="Enregistrer" class="btn btn-primary" />
+            </div>
+            <br>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Retour</a>
+</div>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

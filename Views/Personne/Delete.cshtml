@@ -1,0 +1,19 @@
+@model Nudge.Models.Personne
+
+@{
+    ViewData["Title"] = "Supprimer";
+}
+
+<h1>Supprimer</h1>
+
+<h3>Êtes vous surs de vouloir supprimer 
+    @Html.DisplayFor(model => model.Nom)
+    @Html.DisplayFor(model => model.Prenom) ?
+</h3>
+<br>
+<br>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Supprimer" class="btn btn-danger" /> |
+    <a asp-action="Index">Retour</a>
+</form>

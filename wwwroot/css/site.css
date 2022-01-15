@@ -5,6 +5,7 @@ a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
+  background-color: rgb(196,230,215);
 }
 
 /* Provide sufficient contrast against white background */
@@ -16,6 +17,14 @@ a {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
+}
+
+nav{
+  background-color: rgb(196,230,215);
+}
+
+header{
+  background-color: rgb(196,230,215);
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
@@ -64,6 +73,7 @@ body {
 }
 .footer {
   position: absolute;
+  background-color: rgb(196,230,215);
   bottom: 0;
   width: 100%;
   white-space: nowrap;

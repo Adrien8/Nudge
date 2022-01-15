@@ -1,0 +1,69 @@
+@model Nudge.Models.Personne
+
+@{
+    ViewData["Title"] = "Modifier";
+}
+
+<div class="text-center">
+    <h1>Modifier un profil</h1>
+    <img src='/images/@Html.DisplayFor(modelItem => modelItem.LienPhoto)' height="100" />
+    <h4>@Html.DisplayFor(model => model.Prenom)</h4>
+
+    <hr />
+    <div class="row">
+        <div class="col">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Nom" class="control-label"></label>
+                    <input asp-for="Nom" class="form-control" />
+                    <span asp-validation-for="Nom" class="text-danger"></span>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label asp-for="Prenom" class="control-label"></label>
+                    <input asp-for="Prenom" class="form-control" />
+                    <span asp-validation-for="Prenom" class="text-danger"></span>
+                </div>
+                <br>
+
+                <div class="form-group">
+                    <label asp-for="LienPhoto" class="control-label">Lien Photo</label>
+                    <input asp-for="LienPhoto" class="form-control" />
+                    <span asp-validation-for="LienPhoto" class="text-danger"></span>
+                </div>
+                <br>
+
+                <div class="form-group">
+                    <label asp-for="AdresseMail" class="control-label">Mail</label>
+                    <input asp-for="AdresseMail" class="form-control" />
+                    <span asp-validation-for="AdresseMail" class="text-danger"></span>
+                </div>
+                <br>
+
+                <div class="form-group">
+                    <label asp-for="NumTel" class="control-label">Telephone</label>
+                    <input asp-for="NumTel" class="form-control" />
+                    <span asp-validation-for="NumTel" class="text-danger"></span>
+                </div>
+                <br>
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+                <br>
+
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Retour</a>
+    </div>
+
+</div>
+
+@section Scripts {
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

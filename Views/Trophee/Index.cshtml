@@ -1,0 +1,51 @@
+@model IEnumerable<Nudge.Models.Trophee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="text-center">
+<h1>Les trophées décernés aux plus courageux...</h1>
+<p>
+    <a asp-action="Create">Décerner un trophée</a>
+</p>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td></td>
+            <th>
+                Joueur
+            </th>
+            <th>
+                Défi
+            </th>
+            <th>
+                Trophée
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <img src='../images/trophee.jpg' height="100"  />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Personne.Prenom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Defi.Intitule)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomTrophee)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id"title="Modifier">✏️</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" title="Supprimer">❌</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

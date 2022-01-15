@@ -1,0 +1,98 @@
+@model IEnumerable<Nudge.Models.Defi>
+
+@{
+    ViewData["Title"] = "Tableau de bord";
+}
+<div class="text-center">
+
+    <h1>Tableau de bord</h1>
+    <br>
+    <br>
+<img src='https://cdn.icon-icons.com/icons2/510/PNG/512/speedometer_icon-icons.com_49982.png' alt="" height="100" width="100" class="centrer"/>
+<p>
+    <a asp-action="Create">Lancer un nouveau défi</a>
+</p>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Personne.Prenom)
+                
+            </th>
+            <br>
+            <th>
+                @Html.DisplayNameFor(model => model.Intitule)
+            </th>
+            <br>
+            <th>
+                @Html.DisplayNameFor(model => model.Commentaire)
+            </th>
+            <br>
+            <th>
+                Début
+            </th>
+            <th>
+                Fin
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Progression)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reussite)
+            </th>
+        </tr>
+    </thead>
+    <br>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Personne.Prenom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Intitule)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Commentaire)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateDebut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateFin)
+            </td>
+            <td>
+                @if (@item.TousLesJours == true && (@item.Reussite == false))
+                {
+                    <progress value="@item.Progression" max='@item.DateFin.Subtract(@item.DateDebut).Days'></progress>
+                }
+                @if(@item.TousLesJours == false && (@item.Reussite == false))
+                {
+                    <progress value="@item.Progression" max='@item.Repetition' ></progress>
+                }
+                @if ( @item.Reussite == true || (@item.TousLesJours==true && item.Progression==@item.DateFin.Subtract(@item.DateDebut).Days) || (item.Progression==@item.Repetition))
+                {
+                    <progress value="1" max='1' ></progress>
+                }
+
+            </td>
+            <td>
+                @if (@item.Reussite == true || (@item.TousLesJours==true && item.Progression==@item.DateFin.Subtract(@item.DateDebut).Days) || (item.Progression==@item.Repetition))
+                {
+                    @Html.DisplayName("🏆")
+                }
+
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id"title="Modifier">✏️</a> |
+                <a asp-action="Details" asp-route-id="@item.Id"title="Détails">🔍</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" title="Supprimer">❌</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
